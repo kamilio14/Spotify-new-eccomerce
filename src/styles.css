@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+.page-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.albums-container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+  grid-auto-rows: auto;
+  padding: 25px;
+  grid-gap: 40px;
+  background-color: white;
+}
+
+.single-album {
+  background-color: white;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+}
+
+.image-in-album {
+  max-width: 100%;
+  height: auto;
+}
+
+.album-name {
+  padding: 5px;
+  padding-left: 10px;
+  background-image: linear-gradient(to right, white, #2c3e50);
+  color: black;
+}
+
+.form {
+  display: flex;
+  padding-left: 200px;
+  padding-top: 25px;
+  align-items: center;
+  background-image: linear-gradient(to right, #2c3e50, white);
+  padding-bottom: 12px;
+}
+
+button {
+  padding: 5px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.price-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.fa-cart-shopping {
+  padding-left: 800px;
+  cursor: pointer;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
