@@ -1,50 +1,43 @@
 import "./styles.checkout.css";
 import { useSelector } from "react-redux";
-import { selectCartItems } from "../cart/cartSelectors";
-import { deleteItemFromCart } from "../cart/cartSlice";
-import { useDispatch } from "react-redux";
-import { increaseQuantity, decreaseQuantity } from "../cart/cartSlice";
+import { selectCartItems, selectCartTotal } from "../cart/cartSelectors";
+import { ShoppingCartItem } from "./shopping-cart-item";
+import { Link } from "react-router-dom";
+
 export const CheckOut = () => {
   const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
 
-  const dispatch = useDispatch();
-  console.log("cartItems", cartItems);
   return (
-    <div className="checkout-page">
-      <div className="checkout-window">
-        <div className="checkout-bar">
-          <h2>Name</h2>
-          <h2 className="quantity">Quantity</h2>
-          <h2 className="remove">Remove</h2>
+    <div className="min-h-screen w-full bg-sky-200 flex justify-center items-center p-10 flex-col">
+      <div className="w-4/6 bg-sky-400 min-h-80 flex flex-col ">
+        <div className="flex p-4 justify-between items-center">
+          <h1 className="font-bold font-sans text-3xl">
+            Shopping Cart Checkout{" "}
+          </h1>
+          <Link to="/">
+            <button className="px-2 py-4 border to-blue-400 rounded-md font-bold">
+              Go Back
+            </button>
+          </Link>
         </div>
-        <div className="cartItems-checkout">
+        <div className="p-2">
           {cartItems.map((item) => {
             return (
-              <div className="singleItem-checkout">
-                <h4 className="single-item-name">{item.name}</h4>
-                <button
-                  className="btn-arrows"
-                  onClick={() => dispatch(decreaseQuantity(item))}
-                >
-                  &#x25C0;
-                </button>
-                <h4>{item.quantity}</h4>
-                <button
-                  className="btn-arrows"
-                  onClick={() => dispatch(increaseQuantity(item))}
-                >
-                  &#x25B6;
-                </button>
-                <button
-                  class="x-icon"
-                  onClick={() => dispatch(deleteItemFromCart(item))}
-                >
-                  &#10005;
-                </button>
-              </div>
+              <ShoppingCartItem
+                item={item}
+                name={item.name}
+                key={item.name}
+                img={item.images[1].url}
+                price={item.total_tracks}
+              />
             );
           })}
         </div>
+      </div>
+      <div className="flex justify-evenly w-full p-4 items-center">
+        <h1 className="text-3xl">Total price</h1>
+        <h1 className="text-4xl font-bold">{cartTotal} €</h1>
       </div>
     </div>
   );

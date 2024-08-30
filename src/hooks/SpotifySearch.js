@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setDataFromFetch } from "./data/data.Slice";
+import { setDataFromFetch } from "../data/data.Slice";
 
 export const useSpotifySearch = (accessToken) => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export const useSpotifySearch = (accessToken) => {
     )
       .then((res) => {
         if (!res.ok) {
-          throw new Error("You are probably doing something wrong");
+          throw new Error("Incorrect name of a arist");
         }
         return res.json();
       })
@@ -29,7 +29,8 @@ export const useSpotifySearch = (accessToken) => {
       artistParameters
     )
       .then((res) => res.json())
-      .then((data) => dispatch(setDataFromFetch(data.items)));
+      .then((data) => dispatch(setDataFromFetch(data.items)))
+      .catch((error) => console.log(`The error ${error} occured`));
   }
 
   return search;

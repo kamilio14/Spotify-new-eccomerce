@@ -1,4 +1,4 @@
-import { Form } from "./Form";
+import { Pages } from "./components/Pages";
 import { ShoppingCart } from "./components/shoping-cart";
 import { selectIsCartOpened } from "./cart/cartSelectors";
 import { useSelector } from "react-redux";
@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <>
         <Routes>
-          <Route path="/" element={<Form />} />
+          <Route path="/" element={<Pages />} />
           <Route path="checkout" element={<CheckOut />} />
         </Routes>
       </>
