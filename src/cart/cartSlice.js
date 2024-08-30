@@ -35,8 +35,6 @@ const deleteFromCartItem = (cartItems, itemToBeDeleted) => {
 };
 
 const addToCartItem = (state, newAlbum) => {
-  console.log("kurvy", JSON.stringify(state.cartItems[0]?.quantity));
-
   const existingAlbum = state.cartItems.find((item) => item.id === newAlbum.id);
 
   if (existingAlbum) {
